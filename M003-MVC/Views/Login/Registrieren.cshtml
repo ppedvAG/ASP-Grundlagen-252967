@@ -1,0 +1,14 @@
+﻿<h2>Neuen User anlegen</h2>
+
+@*
+	Form: Eingabeformular
+	Wird verwendet, um vom User mehrere Eingaben zu verlangen
+	Kann mit Tag-Helpern versehen werden
+*@
+<form asp-action="UserAnlegen" method="post">  @*Über asp-action wird der Name der Backendmethode definiert*@
+	Username: <input type="text" name="username"/>  @*Mit name= wird der Name des Parameters in der Backendmethode definiert*@
+	<br/>
+	Passwort: <input type="password" name="passwort"/>
+	<br/>
+	<button type="submit">Registrieren</button>
+</form>

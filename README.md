@@ -1,2 +1,3 @@
-# ASP-Grundlagen-252967
-KursRepository zu Kurs ASP.NET Core - Grundlagen der ppedv AG
+# CSharp Grundkurs
+
+Kurs Repository zum Kurs ASP.NET Core Grundlagen der ppedv AG. Trainer: Lukas Kern (LukasK@ppedv.de).
