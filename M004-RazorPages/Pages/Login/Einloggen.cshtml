@@ -1,0 +1,13 @@
+﻿@page "/Login/Einloggen"
+@model EinloggenModel
+
+<h2>Einloggen</h2>
+
+@*Statt asp-action wird hier asp-page-handler verwendet*@
+<form asp-page-handler="UserAnmelden" method="post">
+	Username: <input type="text" name="username" />
+	<br />
+	Passwort: <input type="password" name="passwort" />
+	<br />
+	<button type="submit">Anmelden</button>
+</form>

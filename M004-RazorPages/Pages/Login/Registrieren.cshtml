@@ -1,0 +1,12 @@
+﻿@page "/Login/Registrieren"
+@model RegistrierenModel
+
+<h2>Neuen User anlegen</h2>
+
+<form asp-page-handler="UserAnlegen" method="post">
+	Username: <input type="text" name="username" />
+	<br />
+	Passwort: <input type="password" name="passwort" />
+	<br />
+	<button type="submit">Registrieren</button>
+</form>

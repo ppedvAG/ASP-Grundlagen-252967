@@ -1,0 +1,16 @@
+﻿<h2>Einfacher Rechner</h2>
+
+<form asp-action="Berechne" method="post">
+	<select name="op">
+		<option value="@Rechenoperation.Addition">Addition</option>
+		<option value="@Rechenoperation.Subtraktion">Subtraktion</option>
+		<option value="@Rechenoperation.Multiplikation">Multiplikation</option>
+		<option value="@Rechenoperation.Division">Division</option>
+	</select>
+	<br />
+	Zahl 1: <input type="number" name="z1" />
+	<br />
+	Zahl 2: <input type="number" name="z2" />
+	<br />
+	<button type="submit">Berechne</button>
+</form>

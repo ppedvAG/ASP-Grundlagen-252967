@@ -1,10 +1,30 @@
-﻿@page
+﻿@*
+	@page: Definiert die Route der Page
+	Normalerweise: localhost:1234/Ordner/Unterordner/Page
+	Kann per String statisch definiert werden
+*@
+
+@page "/Index"
+
+@*
+	Bei Razor Pages hat jede Page eine eigene C#-Klasse dahinter
+	@model zeigt auf diese Klasse
+*@
 @model IndexModel
+
 @{
-    ViewData["Title"] = "Home page";
+	ViewData["Title"] = "Home page";
 }
 
+<h2>Hallo</h2>
+<h3>@Model.Counter</h3>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+	<h1 class="display-4">Welcome</h1>
+	<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@if (Model.CurrentUser != null)
+{
+	<h2>Hallo @Model.CurrentUser.Username</h2>
+}

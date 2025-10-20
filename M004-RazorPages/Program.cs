@@ -1,7 +1,11 @@
+using M004_RazorPages;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddSingleton<List<User>>();
 
 var app = builder.Build();
 
