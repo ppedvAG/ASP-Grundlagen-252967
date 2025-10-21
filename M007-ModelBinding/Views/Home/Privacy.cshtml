@@ -1,0 +1,17 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<h2>Einloggen</h2>
+
+@*
+	asp-for: Empfängt und sendet automatisch die Daten zw. Frontend und Backend
+*@
+<form asp-action="UserAnmelden" method="post">
+	Username: <input type="text" asp-for="Username" />
+	<br />
+	Passwort: <input type="text" asp-for="Password" />
+	<br />
+	<button type="submit">Anmelden</button>
+</form>
