@@ -1,0 +1,28 @@
+﻿@model User
+@*
+	@model: Definiert den Typen für die @Model Variable (Case Sensitive)
+*@
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Welcome</h1>
+	<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@*Wenn wir über die Index() Methode hierher kommen, wird @Model null sein*@
+@*Wenn wir über die IndexUser() Methode kommen, wird @Model einen User enthalten*@
+@if (Model != null)
+{
+	<h2>Hallo @Model.Username</h2>
+}
+
+@*
+	Wenn ein User die Seite besucht, wird der Code innerhalb des Cache-Tags ausgeführt
+	Jeder User sieht den selben Inhalt, bis dieser abläuft
+*@
+<cache expires-after="TimeSpan.FromSeconds(10)">
+	@DateTime.Now
+</cache>

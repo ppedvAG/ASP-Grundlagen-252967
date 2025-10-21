@@ -1,0 +1,24 @@
+﻿@page "/Rechner"
+@model RechnerModel
+
+<h2>Rechner</h2>
+
+<form asp-page-handler="AnzahlEingabe" method="post">
+	Anzahl Zahlen: <input type="number" name="anz"/>
+	<button type="submit">Speichern</button>
+</form>
+
+<form asp-page-handler="Berechne" method="post">
+	<select name="op" asp-items="Html.GetEnumSelectList<Rechenoperation>()">
+		<option value="@Rechenoperation.Keine">Rechenoperation auswählen</option>
+	</select>
+	<br />
+
+	@for (int i = 0; i < Model.Anzahl; i++)
+	{
+		<span>Zahl @i:</span> <input type="number" name="zahlen"/>
+		<br/>
+	}
+
+	<button type="submit">Berechne</button>
+</form>
