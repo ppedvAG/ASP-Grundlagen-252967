@@ -1,7 +1,14 @@
+using M000_DataAccess;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string? conn = builder.Configuration.GetConnectionString("KursDB");
+if (conn != null)
+	builder.Services.AddDbContext<KursDBContext>(o => o.UseSqlServer(conn));
 
 var app = builder.Build();
 

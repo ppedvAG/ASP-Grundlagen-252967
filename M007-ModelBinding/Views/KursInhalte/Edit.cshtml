@@ -1,0 +1,52 @@
+﻿@model M000_DataAccess.KursInhalte
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>KursInhalte</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+			@*
+				ModelOnly: Zeigt nur Fehlermeldungen an, von Feldern, die auch im Frontend zur Validierung gekennzeichnet wurden (mittels asp-validation-for)
+				All: Zeigt alle Fehlermeldungen an
+			*@
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="KursId" class="control-label"></label>
+                <select asp-for="KursId" class="form-control" asp-items="ViewBag.KursId"></select>
+				@*
+					asp-validation-for: Aktiviert die Validierung des Feldes
+					Verwendet DataAnnotations um korrekte Zustände zu determinieren
+					WICHTIG: Validierung funktioniert nur mit asp-for
+				*@
+                <span asp-validation-for="KursId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InhaltTitel" class="control-label"></label>
+                <input asp-for="InhaltTitel" class="form-control" />
+                <span asp-validation-for="InhaltTitel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*
+	Section: Benannter Teil Code, wird hier in _Layout.cshtml (Zeile 48) gerendert
+*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} @*Partielle View: View, die immer in eine andere View eingebettet wird*@
+}

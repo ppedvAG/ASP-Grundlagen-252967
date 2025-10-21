@@ -17,8 +17,9 @@ public partial class KursInhalte
     [Column("KursID")]
     public int? KursId { get; set; }
 
-    [StringLength(100)]
+    [StringLength(100, MinimumLength = 5, ErrorMessage = "Der Titel muss zw. 5 und 100 Zeichen haben!")]
     [Unicode(false)]
+	[Required(ErrorMessage = "Bitte einen Titel eingeben.")]
     public string InhaltTitel { get; set; }
 
     [ForeignKey("KursId")]
