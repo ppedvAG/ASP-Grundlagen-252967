@@ -11,10 +11,11 @@ public class HomeController(ILogger<HomeController> logger) : Controller
 
 	/// <summary>
 	/// [FromQuery]: ?test=123
-	/// [FromRoute]: /Home/Index/123
+	/// [FromRoute]: /Home/Index/123 (Benötigt immer auch das [Route] Attribut)
 	/// [FromBody]: Im HttpBody
 	/// </summary>
-	public IActionResult Index(string test)
+	[Route("/Home/Index/{test}")]
+	public IActionResult Index([FromRoute] int test)
 	{
 		return View("Index", test);
 	}

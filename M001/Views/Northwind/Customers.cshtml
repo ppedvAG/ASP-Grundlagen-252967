@@ -1,0 +1,39 @@
+﻿@model List<Customers>
+
+<h2>Alle Kunden</h2>
+
+<form asp-action="FilterCustomers">
+	Land: <input type="text" name="country"/>
+	<button type="submit">Filtern</button>
+</form>
+
+<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Firmenname</th>
+			<th>Ansprechperson</th>
+			<th>Adresse</th>
+			<th>Telefonnummer</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (Customers c in Model)
+		{
+			<tr>
+				<td>@c.CustomerId</td>
+				<td>@c.CompanyName</td>
+				<td>@c.ContactName</td>
+				<td>@($"{c.Address} {c.City}, {c.PostalCode} {c.Country}")</td>
+				<td>@c.Phone</td>
+				<td>
+					<a asp-route-id="@c.CustomerId" asp-action="ShowOrdersForCustomer">
+						<button type="submit">Bestellungen anzeigen</button>
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+

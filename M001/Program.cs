@@ -1,3 +1,6 @@
+using M001.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace M001;
 
 public class Program
@@ -8,6 +11,10 @@ public class Program
 
 		// Add services to the container.
 		builder.Services.AddControllersWithViews();
+
+		string? conn = builder.Configuration.GetConnectionString("Northwind");
+		if (conn != null)
+			builder.Services.AddDbContext<NorthwindContext>(o => o.UseSqlServer(conn));
 
 		var app = builder.Build();
 
