@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "APITest_2025_10_22",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

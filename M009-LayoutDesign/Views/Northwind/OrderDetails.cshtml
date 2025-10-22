@@ -1,0 +1,26 @@
+﻿@using M009_LayoutDesign.Controllers
+@model List<OrderDetailWithProduct>
+
+<h2>Rechnungsposten von @Model[0].OrderId</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Produktname</th>
+			<th>Anzahl</th>
+			<th>Stückpreis</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (OrderDetailWithProduct odp in Model)
+		{
+			<tr>
+				<td>@odp.ProductName</td>
+				<td>@odp.Quantity</td>
+				<td>@odp.UnitPrice.ToString("N2")</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<p>Rechnungssumme: @Model.Sum(e => e.UnitPrice * e.Quantity).ToString("N2")$</p>

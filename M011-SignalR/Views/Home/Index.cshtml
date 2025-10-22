@@ -1,0 +1,46 @@
+﻿<div>
+	Username: <input type="text" id="username" />
+	<br />
+	Nachricht: <input type="text" id="message" />
+	<br />
+	<button id="send">Senden</button>
+	<br />
+	<ul id="msgList"></ul>
+</div>
+
+<script src="~/lib/aspnet-signalr/signalr.js"></script>
+<script>
+	//Verbindung zum Hub herstellen
+	var connection = new signalR.HubConnectionBuilder().withUrl("/Chat").build();
+	connection.start();
+
+	//connection.on: Hört auf Nachrichten vom Hub
+	//Hier muss der Name definiert werden, welcher in SendAsync beschrieben wurde
+	connection.on("NachrichtEmpfangen", function (user, msg) {
+		//Dieser Code wird bei Empfangen einer Nachricht des Hubs ausgeführt
+		var li = document.createElement("li");
+		li.textContent = new Date().toLocaleString() + ": " + user + " sagt: " + msg;
+		document.getElementById("msgList").appendChild(li)
+	});
+
+	//Dem senden-Button eine Funktion geben
+	document.getElementById("send").addEventListener("click", function (e) {
+		var u = document.getElementById("username").value; //Feld 1 auslesen
+		var m = document.getElementById("message").value; //Feld 2 auslesen
+		connection.invoke("NachrichtSenden", u, m); //Hier wird die Methode vom Hub eingetragen
+	});
+
+	connection.on("UserVerbunden", function () {
+		//Dieser Code wird bei Empfangen einer Nachricht des Hubs ausgeführt
+		var li = document.createElement("li");
+		li.textContent = new Date().toLocaleString() + "Neuer Benutzer";
+		document.getElementById("msgList").appendChild(li)
+	});
+
+	connection.on("UserGetrennt", function () {
+		//Dieser Code wird bei Empfangen einer Nachricht des Hubs ausgeführt
+		var li = document.createElement("li");
+		li.textContent = new Date().toLocaleString() + "Benutzer getrennt";
+		document.getElementById("msgList").appendChild(li)
+	});
+</script>

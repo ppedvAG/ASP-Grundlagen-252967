@@ -1,0 +1,14 @@
+﻿@using Microsoft.Extensions.Options
+@using System.Globalization
+@inject IOptions<RequestLocalizationOptions> options
+
+@{
+	IList<CultureInfo> cultures = options.Value.SupportedUICultures!;
+	IEnumerable<SelectListItem> selectListItems = cultures.Select(e => new SelectListItem() { Value = e.Name, Text = e.DisplayName });
+	string returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+<form asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post">
+	<label>Sprache: </label>
+	<select name="language" asp-items="selectListItems" onchange="this.form.submit();"></select> @*Close-Tag muss hier dediziert separat sein*@
+</form>

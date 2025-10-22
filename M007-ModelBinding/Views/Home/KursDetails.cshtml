@@ -1,0 +1,36 @@
+﻿@model M000_DataAccess.Kurse
+
+@{
+    ViewData["Title"] = "KursDetails";
+}
+
+<h1>KursDetails</h1>
+
+<div>
+    <h4>Kurse</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kursname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kursname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DauerInTagen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DauerInTagen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Aktiv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Aktiv)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
